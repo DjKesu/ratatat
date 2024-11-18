@@ -2594,3 +2594,263 @@ Traceback (most recent call last):
     raise AppError(
 gradio_client.exceptions.AppError: The upstream Gradio app has raised an exception but has not enabled verbose error reporting. To enable, set show_error=True in launch().
 2024-11-17 00:38:07,226 - __main__ - ERROR - Endpoint: clone_voice - Error - Processing Time: 0.73 seconds - Error: 500: Error cloning voice: The upstream Gradio app has raised an exception but has not enabled verbose error reporting. To enable, set show_error=True in launch().
+2024-11-17 12:21:00,381 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 12:21:00,389 - __main__ - INFO - Endpoint: analyze_image_openai - Processing Time: 4.40 seconds
+2024-11-17 12:22:41,795 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 12:22:41,797 - __main__ - INFO - Endpoint: analyze_image_openai - Processing Time: 5.72 seconds
+2024-11-17 12:29:18,271 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 12:29:19,289 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 12:29:25,938 - root - ERROR - Error in transcribe endpoint: 'latin-1' codec can't encode character '\u2019' in position 28: ordinal not in range(256)
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 318, in transcribe_audio
+    return StreamingResponse(
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/djkesu/Desktop/Projects/ratatat/venv/lib/python3.11/site-packages/starlette/responses.py", line 228, in __init__
+    self.init_headers(headers)
+  File "/Users/djkesu/Desktop/Projects/ratatat/venv/lib/python3.11/site-packages/starlette/responses.py", line 59, in init_headers
+    raw_headers = [(k.lower().encode("latin-1"), v.encode("latin-1")) for k, v in headers.items()]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/djkesu/Desktop/Projects/ratatat/venv/lib/python3.11/site-packages/starlette/responses.py", line 59, in <listcomp>
+    raw_headers = [(k.lower().encode("latin-1"), v.encode("latin-1")) for k, v in headers.items()]
+                                                 ^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'latin-1' codec can't encode character '\u2019' in position 28: ordinal not in range(256)
+2024-11-17 12:29:25,942 - __main__ - ERROR - Endpoint: transcribe_audio - Error - Processing Time: 9.91 seconds - Error: 500: 'latin-1' codec can't encode character '\u2019' in position 28: ordinal not in range(256)
+2024-11-17 12:39:52,940 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 12:39:52,942 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 2.16 seconds
+2024-11-17 12:44:25,841 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 12:44:25,842 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.98 seconds
+2024-11-17 12:45:10,575 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 12:45:10,576 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.94 seconds
+2024-11-17 12:52:48,070 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 12:52:48,071 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 2.59 seconds
+2024-11-17 12:56:48,151 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 367, in get_chat_history
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 12:59:47,265 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 12:59:47,267 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 2.42 seconds
+2024-11-17 12:59:51,153 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 12:59:51,179 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 3.72 seconds
+2024-11-17 13:10:20,307 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 365, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:10:56,689 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 365, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:12:35,105 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 365, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:12:37,258 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 365, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:13:19,720 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 365, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:13:39,428 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:13:39,429 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.24 seconds
+2024-11-17 13:13:43,312 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:13:43,332 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.62 seconds
+2024-11-17 13:16:47,924 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:16:47,925 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.32 seconds
+2024-11-17 13:16:49,175 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:16:49,200 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.07 seconds
+2024-11-17 13:32:39,122 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:32:39,126 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 3.09 seconds
+2024-11-17 13:32:40,879 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:32:40,883 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.16 seconds
+2024-11-17 13:38:58,268 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:39:08,471 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:39:15,958 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:40:09,310 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:41:02,690 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:41:32,041 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:41:32,042 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 0.93 seconds
+2024-11-17 13:41:33,195 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:41:33,196 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.05 seconds
+2024-11-17 13:44:51,115 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:44:54,346 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:44:54,414 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 13:45:32,821 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:45:32,821 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.06 seconds
+2024-11-17 13:45:33,876 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:45:33,877 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.81 seconds
+2024-11-17 13:55:20,506 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:55:20,507 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.88 seconds
+2024-11-17 13:55:22,258 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:55:22,259 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.93 seconds
+2024-11-17 13:58:02,332 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:58:02,333 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.69 seconds
+2024-11-17 13:58:05,083 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:58:05,084 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.50 seconds
+2024-11-17 13:59:39,142 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 13:59:39,143 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.18 seconds
+2024-11-17 13:59:40,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 13:59:40,504 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.79 seconds
+2024-11-17 14:14:57,736 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:14:57,737 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 3.77 seconds
+2024-11-17 14:14:59,094 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:14:59,096 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.94 seconds
+2024-11-17 14:15:56,711 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 14:15:57,090 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 14:15:59,937 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 14:16:34,947 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 14:16:44,060 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:16:44,061 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.47 seconds
+2024-11-17 14:16:44,956 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:16:44,957 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.80 seconds
+2024-11-17 14:17:26,092 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:17:26,093 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.49 seconds
+2024-11-17 14:17:28,413 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:17:28,415 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.72 seconds
+2024-11-17 14:17:49,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:17:49,059 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 0.98 seconds
+2024-11-17 14:17:50,225 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:17:50,227 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.94 seconds
+2024-11-17 14:19:52,161 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:19:52,162 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.77 seconds
+2024-11-17 14:19:53,233 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:19:53,234 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.96 seconds
+2024-11-17 14:20:14,013 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:20:14,014 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.69 seconds
+2024-11-17 14:20:15,640 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:20:15,641 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.44 seconds
+2024-11-17 14:24:06,850 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 14:25:47,897 - root - ERROR - Error fetching chat history: 404: Session not found
+Traceback (most recent call last):
+  File "/Users/djkesu/Desktop/Projects/ratatat/server.py", line 368, in get_chat_history
+    raise HTTPException(status_code=404, detail="Session not found")
+fastapi.exceptions.HTTPException: 404: Session not found
+2024-11-17 14:29:58,679 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 14:29:58,680 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.17 seconds
+2024-11-17 14:29:59,768 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 14:29:59,771 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.91 seconds
+2024-11-17 15:12:27,376 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:12:27,376 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 3.16 seconds
+2024-11-17 15:12:28,574 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:12:28,576 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.97 seconds
+2024-11-17 15:45:26,414 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:45:26,415 - __main__ - INFO - Endpoint: analyze_image_openai - Processing Time: 3.96 seconds
+2024-11-17 15:45:46,599 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:45:46,600 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.34 seconds
+2024-11-17 15:45:47,401 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:45:47,403 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.61 seconds
+2024-11-17 15:46:21,510 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:46:21,510 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 3.47 seconds
+2024-11-17 15:46:22,503 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:46:22,505 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.82 seconds
+2024-11-17 15:46:49,774 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:46:49,775 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.06 seconds
+2024-11-17 15:46:51,173 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:46:51,175 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 1.19 seconds
+2024-11-17 15:47:05,838 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:47:05,840 - __main__ - INFO - Endpoint: analyze_image_openai - Processing Time: 3.78 seconds
+2024-11-17 15:47:25,590 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:47:25,591 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 0.84 seconds
+2024-11-17 15:49:37,078 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:49:37,080 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 131.36 seconds
+2024-11-17 15:50:07,771 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:50:07,772 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 24.28 seconds
+2024-11-17 15:50:33,552 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:50:33,553 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.85 seconds
+2024-11-17 15:50:34,700 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:50:34,702 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.96 seconds
+2024-11-17 15:50:55,493 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:50:55,494 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.44 seconds
+2024-11-17 15:50:56,084 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:50:56,086 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.41 seconds
+2024-11-17 15:51:18,585 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:51:18,586 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.60 seconds
+2024-11-17 15:51:19,825 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:51:19,827 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.86 seconds
+2024-11-17 15:51:24,876 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:51:24,877 - __main__ - INFO - Endpoint: analyze_image_openai - Processing Time: 5.05 seconds
+2024-11-17 15:51:51,239 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:51:51,240 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.69 seconds
+2024-11-17 15:51:52,418 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:51:52,420 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.98 seconds
+2024-11-17 15:52:14,229 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 15:52:14,229 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.94 seconds
+2024-11-17 15:52:15,005 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 15:52:15,007 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.60 seconds
+2024-11-17 16:11:04,082 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 16:11:04,083 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 2.46 seconds
+2024-11-17 16:11:05,098 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 16:11:05,100 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.89 seconds
+2024-11-17 16:11:43,562 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 16:11:43,562 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.47 seconds
+2024-11-17 16:11:44,549 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 16:11:44,551 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.58 seconds
+2024-11-17 16:12:30,186 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 16:12:30,188 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.55 seconds
+2024-11-17 16:12:31,308 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 16:12:31,310 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.78 seconds
+2024-11-17 16:12:36,311 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 16:12:36,312 - __main__ - INFO - Endpoint: analyze_image_openai - Processing Time: 3.98 seconds
+2024-11-17 16:22:27,482 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 16:22:27,483 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.88 seconds
+2024-11-17 16:22:28,322 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-11-17 16:22:28,324 - __main__ - INFO - Endpoint: generate_cooking_response - Processing Time: 0.75 seconds
+2024-11-17 16:22:49,020 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-11-17 16:22:49,021 - __main__ - INFO - Endpoint: speech_to_text - Processing Time: 1.25 seconds

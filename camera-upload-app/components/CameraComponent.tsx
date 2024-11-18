@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import * as FileSystem from 'expo-file-system';
 
+const SERVER_URL = 'https://8a28-99-209-235-170.ngrok-free.app'
+
 type AnalysisResponse = {
   status?: string;
   prompt?: string;
@@ -24,13 +26,14 @@ export default function App() {
   const [facing, setFacing] = useState<CameraType>('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [isCapturing, setIsCapturing] = useState(false);
-  const [ollamaResponse, setOllamaResponse] = useState<AnalysisResponse | null>(null);
+  // const [ollamaResponse, setOllamaResponse] = useState<AnalysisResponse | null>(null);
   const [openAIResponse, setOpenAIResponse] = useState<AnalysisResponse | null>(null);
   const cameraRef = useRef(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     return () => {
+      // Cleanup
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
@@ -52,7 +55,7 @@ export default function App() {
   };
 
   const analyzeWithEndpoint = async (formData: FormData, endpoint: string): Promise<AnalysisResponse> => {
-    const response = await fetch(`https://c6bd-99-209-235-170.ngrok-free.app/${endpoint}`, {
+    const response = await fetch(`${SERVER_URL}/${endpoint}`, {
       method: 'POST',
       body: formData,
       headers: {
@@ -84,19 +87,14 @@ export default function App() {
         size: fileInfo.size
       } as any;
 
-      // Create FormData instances for both requests
-      const ollamaFormData = new FormData();
+      // Create FormData instance for OpenAI request
       const openAIFormData = new FormData();
-      ollamaFormData.append('file', fileData);
       openAIFormData.append('file', fileData);
 
-      // Make parallel requests to both endpoints
-      const [ollamaResult, openAIResult] = await Promise.all([
-        analyzeWithEndpoint(ollamaFormData, 'analyze-image'),
-        analyzeWithEndpoint(openAIFormData, 'analyze-image-openai')
-      ]);
+      // Make request to OpenAI endpoint only
+      const openAIResult = await analyzeWithEndpoint(openAIFormData, 'analyze-image-openai');
 
-      setOllamaResponse(ollamaResult);
+      // setOllamaResponse(ollamaResult);
       setOpenAIResponse(openAIResult);
 
     } catch (error) {
@@ -105,7 +103,7 @@ export default function App() {
         status: 'error',
         error: (error as Error).message || 'Error analyzing image'
       };
-      setOllamaResponse(errorResponse);
+      // setOllamaResponse(errorResponse);
       setOpenAIResponse(errorResponse);
     }
   };
@@ -188,7 +186,7 @@ export default function App() {
 
       <ScrollView style={styles.responseContainer}>
         <View style={styles.responseHeader}>
-          <Text style={styles.responseTitle}>Model Comparison</Text>
+          <Text style={styles.responseTitle}>AI Analysis</Text>
           {isCapturing && (
             <Text style={styles.captureStatus}>
               Next capture in: {100 - (Math.floor(Date.now() / 1000) % 100)}s
@@ -196,7 +194,7 @@ export default function App() {
           )}
         </View>
 
-        <ModelResponse title="Ollama" response={ollamaResponse} />
+        {/* <ModelResponse title="Ollama" response={ollamaResponse} /> */}
         <ModelResponse title="OpenAI" response={openAIResponse} />
       </ScrollView>
     </View>
